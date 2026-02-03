@@ -1,9 +1,0 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/Accounting/Credit-Debit-Note/Debit": "pages/Accounting/Credit-Debit-Note/Debit.js",
-  "/Accounting/Order/Add-order": "pages/Accounting/Order/Add-order.js",
-  "/Accounting/Credit-Debit-Note/Credit": "pages/Accounting/Credit-Debit-Note/Credit.js"
-}

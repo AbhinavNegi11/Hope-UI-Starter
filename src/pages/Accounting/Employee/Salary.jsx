@@ -34,7 +34,7 @@ const generateRandomOfferData = () =>
     };
   });
 
-export default function SalarySlipPage() {
+const Salary=()=> {
   /* ---------- LEFT FORM STATE ---------- */
   const emptySalary = {
     name: "",
@@ -146,3 +146,5 @@ export default function SalarySlipPage() {
     </Row>
   );
 }
+Salary.layout="Accounting"
+export default Salary

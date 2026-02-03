@@ -13,6 +13,7 @@ import Default from "@/layouts/Default";
 import LandingPage from "@/layouts/LandingPage";
 import SSRProvider from 'react-bootstrap/SSRProvider';
 import Blank from '@/layouts/blank';
+import Accounting from '@/layouts/Accounting';
 
 //store
 import { Provider } from 'react-redux';
@@ -23,6 +24,7 @@ const layouts : any = {
   "Blank":Blank,
   "DEFAULT": Default,
   "LandingPage": LandingPage,
+  "Accounting": Accounting,
 };
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -35,6 +37,8 @@ type AppPropsWithLayout = AppProps & {
 
 export default function App({ Component, ...rest }: AppPropsWithLayout) {
   const layoutName = layouts[Component.layout] || layouts['DEFAULT']
+  console.log(Component.layout)
+
   const Layout = layoutName || ((children: any) => <>{children}</>);
   const { store, props } = wrapperStore.useWrappedStore(rest);
   const { pageProps } = props;

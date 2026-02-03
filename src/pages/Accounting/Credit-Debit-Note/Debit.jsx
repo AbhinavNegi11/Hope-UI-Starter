@@ -5,8 +5,7 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import Link from "next/link";
 import Card from "@/components/bootstrap/card";
 import DataTable from "@/components/DataTable";
-
-export default function DebitNotePage() {
+const DebitNotePage = () =>  {
   /* ---------------- Filters ---------------- */
   const [filters, setFilters] = useState({
     vendor: "",
@@ -123,3 +122,5 @@ export default function DebitNotePage() {
     </Row>
   );
 }
+DebitNotePage.layout="Accounting"
+export default DebitNotePage

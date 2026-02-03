@@ -43,7 +43,7 @@ const emptyOrderRow = {
   total: "",
 };
 
-export default function AddOrderPage() {
+const AddOrderPage=()=> {
   const [activeStep, setActiveStep] = useState(1);
 
   /* ================= STEP 1 ================= */
@@ -255,3 +255,5 @@ export default function AddOrderPage() {
     </Row>
   );
 }
+AddOrderPage.layout="Accounting"
+export default AddOrderPage 

@@ -83,5 +83,5 @@ const ViewPurchasePage = memo(() => {
   );
 });
 
-ViewPurchasePage.displayName = "ViewPurchasePage";
+ViewPurchasePage.layout = "Accounting";
 export default ViewPurchasePage;

@@ -4,8 +4,7 @@ import { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import Card from "@/components/bootstrap/card";
 import DataTable from "@/components/DataTable";
-
-export default function CreditNotePage() {
+const CreditNotePage = () =>  {
     /* ---------------- Filters ---------------- */
     const [filters, setFilters] = useState({
         client: "",
@@ -121,3 +120,5 @@ export default function CreditNotePage() {
         </Row>
     );
 }
+CreditNotePage.layout = "Accounting";
+export default CreditNotePage;

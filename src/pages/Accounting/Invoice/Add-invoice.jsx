@@ -5,7 +5,7 @@ import { Row, Col, Table, Button, Form, Stack } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 import Card from "@/components/bootstrap/card";
 
-export default function AddInvoicePage() {
+const AddInvoicePage=()=> {
   const router = useRouter();
 
   /* ---------------- Step 1 : Address ---------------- */
@@ -162,3 +162,5 @@ export default function AddInvoicePage() {
     </>
   );
 }
+AddInvoicePage.layout="Accounting"
+export default AddInvoicePage 

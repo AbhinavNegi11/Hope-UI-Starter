@@ -30,7 +30,7 @@ const generateRandomSalaryData = () => {
 };
 
 
-export default function SalarySlipPage() {
+const SalarySlipPage=()=> {
   /* ---------- Form State ---------- */
   const emptySlip = {
     employee: "",
@@ -267,5 +267,7 @@ export default function SalarySlipPage() {
     </Row>
   );
 }
+SalarySlipPage.layout="Accounting"
+export default SalarySlipPage
 
 

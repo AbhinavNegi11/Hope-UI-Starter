@@ -1,73 +1,57 @@
-"use client";
-
-import React, { ReactNode, useState, useContext, memo, Fragment } from "react";
+import React, { ReactNode, useState, useContext, memo, Fragment } from 'react'
 
 //Router
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 //React-bootstrap
-import {
-  Accordion,
-  AccordionContext,
-  Nav,
-  Tooltip,
-  OverlayTrigger,
-  Collapse,
-} from "react-bootstrap";
-import { useAccordionButton } from "react-bootstrap/AccordionButton";
+import { Accordion, AccordionContext, Nav, Tooltip, OverlayTrigger, Collapse } from 'react-bootstrap'
+import { useAccordionButton } from 'react-bootstrap/AccordionButton'
 //Componets
 import SidebarMenu from '../../components/sidebar/sidebar-menu'
+import Modalpopup from '@/components/modules/auth/modal-popup'
+
 // interface
 interface Props {
-  active?: any;
-  children: ReactNode;
-  eventKey?: any;
-  onClick: any;
-  className?: string;
+    active?: any;
+    children: ReactNode
+    eventKey?: any
+    onClick: any
+    className?: string
 }
 
 function CustomToggle(props: Props) {
-  // const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
-  const { activeEventKey } = useContext(AccordionContext);
+    const { activeEventKey } = useContext(AccordionContext);
 
-  const decoratedOnClick = useAccordionButton(props.eventKey, (active) =>
-    props.onClick({ state: !active, eventKey: props.eventKey })
-  );
+    const decoratedOnClick = useAccordionButton(props.eventKey, (active) => props.onClick({ state: !active, eventKey: props.eventKey }));
 
-  const isCurrentEventKey: any = activeEventKey === props.eventKey;
+    const isCurrentEventKey: any = activeEventKey === props.eventKey;
 
-  return (
-    <Link
-      href="#"
-      aria-expanded={isCurrentEventKey ? "true" : "false"}
-      className={`nav-link ${props.className}`}
-      role="button"
-      onClick={(e) => {
-        decoratedOnClick(isCurrentEventKey);
-      }}
-    >
-      {props.children}
-    </Link>
-  );
+    return (
+        <Link href="#" aria-expanded={isCurrentEventKey ? 'true' : 'false'} className={`nav-link ${props.className}`} role="button" onClick={(e) => {
+            decoratedOnClick(isCurrentEventKey)
+        }}>
+            {props.children}
+        </Link>
+    );
 }
 
+
 const VerticalNav = memo(() => {
-  const [activeMenu, setActiveMenu]: any = useState(false);
-  const [show, setShow] = useState(false);
+    const [activeMenu, setActiveMenu]: any = useState(false)
+    const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [show1, setShow1] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [show1, setShow1] = useState(false);
 
-  const handleClose1 = () => setShow1(false);
-  const handleShow1 = () => setShow1(true);
-  const [active, setActive] = useState("");
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);
+    const [active, setActive] = useState('')  
+        let location = useRouter();
 
-  //location
-  let location = useRouter();
-  return (
+    return (
     <Fragment>
       <Accordion as="ul" className="navbar-nav iq-main-menu">
 
@@ -122,24 +106,9 @@ const VerticalNav = memo(() => {
           </Link>
         </li>
 
-
-        <Accordion.Item
-          as="li"
-          eventKey="Accounting"
-          bsPrefix={`nav-item ${location.pathname.startsWith("/Accounting") || active === "Accounting"
-            ? "active"
-            : ""
-            }`}
-          onClick={() => setActive("Accounting")}
-        >
-          <CustomToggle
-            eventKey="Accounting"
-            onClick={(activeKey: any) => setActiveMenu(activeKey)}
-          >
-            <OverlayTrigger
-              placement="right"
-              overlay={<Tooltip>Accounting</Tooltip>}
-            >
+        <Accordion.Item as="li" eventKey="sidebar-Accounting" bsPrefix={`nav-item ${active === 'Accounting' ? 'active' : ''} `} onClick={() => setActive('Accounting')} >
+          <CustomToggle eventKey="sidebar-Accounting" onClick={(activeKey: any) => setActiveMenu(activeKey)}>
+            <OverlayTrigger placement="right" overlay={<Tooltip>Accounting</Tooltip>}>
               <i className="icon">
                 <svg
                   className="icon-20"
@@ -174,25 +143,14 @@ const VerticalNav = memo(() => {
               </svg>
             </i>
           </CustomToggle>
+          <Accordion.Collapse eventKey="sidebar-Accounting" >
+            <ul className="sub-nav">
 
-          <Accordion.Collapse eventKey="Accounting">
-            <Accordion as="ul" className="navbar-nav iq-main-menu sub-nav">
-
-              {/* Credit-Debit-Note */}
-              <Accordion.Item
-                eventKey="Credit-Debit-Note"
-                as="li"
-                bsPrefix={`nav-item ${location.pathname.startsWith("/Accounting/Credit-Debit-Note")
-                  ? "active"
-                  : ""
-                  }`}
-              >
-                <CustomToggle
-                  eventKey="Credit-Debit-Note"
-                  onClick={(activeKey: any) => setActiveMenu(activeKey)}
-                  className="nav-link"
-                >
-                  <i className="icon">
+              <Accordion as="ul" className="navbar-nav  sub-nav iq-main-menu">
+                <Accordion.Item as="li" eventKey="CD" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Credit-Debit-Note/Credit' ? 'active' : '' || location.pathname === '/Accounting/Credit-Debit-Note/Debit' ? 'active' : '' }`}  >
+                  <CustomToggle eventKey="CD" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
+                   
+                     <i className="icon">
                     <svg
                       width="20"
                       className="icon-20"
@@ -215,8 +173,11 @@ const VerticalNav = memo(() => {
                       />
                     </svg>
                   </i>
-                  <span className="sidenav-mini-icon">CD</span>
-                  <span className="item-name">Credit-Debit-Note</span>
+                    <OverlayTrigger placement="right" overlay={<Tooltip>Credit-Debit-Note</Tooltip>}>
+                      <i className="sidenav-mini-icon">CD</i>
+                    </OverlayTrigger>
+
+                   <span className="item-name">Credit-Debit-Note</span>
                   <i className="right-icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -234,90 +195,19 @@ const VerticalNav = memo(() => {
                       />
                     </svg>
                   </i>
-                </CustomToggle>
+                  </CustomToggle>
+                  <Accordion.Collapse eventKey="CD">
+                    <ul className="sub-nav " >
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Credit-Debit-Note/Credit' title='Credit ' minititle='C'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Credit-Debit-Note/Debit' title=' Debit' minititle='D'></SidebarMenu>
 
-                <Accordion.Collapse eventKey="Credit-Debit-Note">
-                  <ul className="sub-nav">
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Credit-Debit-Note/Credit"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Credit-Debit-Note/Credit"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Credit</span>
-                      </Link>
-                    </Nav.Item>
-
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Credit-Debit-Note/Debit"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Credit-Debit-Note/Debit"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Debit</span>
-                      </Link>
-                    </Nav.Item>
-                  </ul>
-                </Accordion.Collapse>
-              </Accordion.Item>
-
-              {/* Employee */}
-              <Accordion.Item
-                eventKey="Employee"
-                as="li"
-                bsPrefix={`nav-item ${location.pathname.startsWith("/Accounting/Employee")
-                  ? "active"
-                  : ""
-                  }`}
-              >
-                <CustomToggle
-                  eventKey="Employee"
-                  onClick={(activeKey: any) => setActiveMenu(activeKey)}
-                  className="nav-link"
-                >
-                  <i className="icon">
+                    </ul>
+                  </Accordion.Collapse>
+                </Accordion.Item>
+                <Accordion.Item as="li" eventKey="Employee" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Employee/Employee-details' ? 'active' : '' || location.pathname === '/Accounting/Employee/Salary-slip' ? 'active' : '' || location.pathname === '/Accounting/Employee/Salary' ? 'active' : ''}`}  >
+                  <CustomToggle eventKey="Employee" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
+                   
+                     <i className="icon">
                     <svg
                       width="20"
                       className="icon-20"
@@ -340,7 +230,9 @@ const VerticalNav = memo(() => {
                       />
                     </svg>
                   </i>
-                  <span className="sidenav-mini-icon">CD</span>
+                    <OverlayTrigger placement="right" overlay={<Tooltip>Employee</Tooltip>}>
+                      <i className="sidenav-mini-icon">EM</i>
+                    </OverlayTrigger>
 
                   <span className="item-name">Employee</span>
                   <i className="right-icon">
@@ -360,120 +252,21 @@ const VerticalNav = memo(() => {
                       />
                     </svg>
                   </i>
-                </CustomToggle>
+                  </CustomToggle>
+                  <Accordion.Collapse eventKey="Employee">
+                    <ul className="sub-nav " >
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Employee/Employee-details' title='Employee Details' minititle='E'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Employee/Salary-slip' title=' Salary slip' minititle='SD'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Employee/Salary' title=' Salary ' minititle='S'></SidebarMenu>
 
-                <Accordion.Collapse eventKey="Employee">
-                  <ul className="sub-nav">
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Employee/Employee-details"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Employee/Employee-details"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Employee-details</span>
-                      </Link>
-                    </Nav.Item>
+                    </ul>
+                  </Accordion.Collapse>
+                </Accordion.Item>
 
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Employee/Salary-slip"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Employee/Salary-slip"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Salary-slip</span>
-                      </Link>
-                    </Nav.Item>
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Employee/Salary"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Employee/Salary"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Salary</span>
-                      </Link>
-                    </Nav.Item>
-                  </ul>
-                </Accordion.Collapse>
-              </Accordion.Item>
-
-              {/* Invoice */}
-              <Accordion.Item
-                eventKey="Invoice"
-                as="li"
-                bsPrefix={`nav-item ${location.pathname.startsWith("/Accounting/Invoice")
-                  ? "active"
-                  : ""
-                  }`}
-              >
-                <CustomToggle
-                  eventKey="Invoice"
-                  onClick={(activeKey: any) => setActiveMenu(activeKey)}
-                  className="nav-link"
-                >
-                  <i className="icon">
+                <Accordion.Item as="li" eventKey="Invoice" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Invoice/Add-invoice' ? 'active' : '' || location.pathname === '/Accounting/Invoice/View-invoice' ? 'active' : ''  }`}  >
+                  <CustomToggle eventKey="Invoice" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
+                   
+                     <i className="icon">
                     <svg
                       width="20"
                       className="icon-20"
@@ -498,7 +291,9 @@ const VerticalNav = memo(() => {
                   </i>
 
                   {/* MINI ICON */}
-                  <span className="sidenav-mini-icon">IN</span>
+                   <OverlayTrigger placement="right" overlay={<Tooltip>Invoice</Tooltip>}>
+                      <i className="sidenav-mini-icon">IN</i>
+                    </OverlayTrigger>
 
                   <span className="item-name">Invoice</span>
                   <i className="right-icon">
@@ -518,91 +313,23 @@ const VerticalNav = memo(() => {
                       />
                     </svg>
                   </i>
-                </CustomToggle>
+                   
 
-                <Accordion.Collapse eventKey="Invoice">
-                  <ul className="sub-nav">
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Invoice/Add-invoice"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Invoice/Add-Invoice"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Add-invoice</span>
-                      </Link>
-                    </Nav.Item>
+                
+                  </CustomToggle>
+                  <Accordion.Collapse eventKey="Invoice">
+                    <ul className="sub-nav " >
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Invoice/Add-invoice' title=' Add-invoice' minititle='Ai'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Invoice/View-invoice' title=' View-invoice' minititle='Vi'></SidebarMenu>
 
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Invoice/View-invoice"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Invoice/View-invoice"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">View-invoice</span>
-                      </Link>
-                    </Nav.Item>
-
-                  </ul>
-                </Accordion.Collapse>
-              </Accordion.Item>
-
-              {/* Order */}
-              <Accordion.Item
-                eventKey="Order"
-                as="li"
-                bsPrefix={`nav-item ${location.pathname.startsWith("/Accounting/Order")
-                  ? "active"
-                  : ""
-                  }`}
-              >
-                <CustomToggle
-                  eventKey="Order"
-                  onClick={(activeKey: any) => setActiveMenu(activeKey)}
-                  className="nav-link"
-                >
-                  <i className="icon">
+                    </ul>
+                  </Accordion.Collapse>
+                </Accordion.Item>
+              
+                <Accordion.Item as="li" eventKey="Order" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Order/Add-order' ? 'active' : '' || location.pathname === '/Accounting/Order/View-order' ? 'active' : ''  }`}  >
+                  <CustomToggle eventKey="Order" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
+                   
+                     <i className="icon">
                     <svg
                       width="20"
                       className="icon-20"
@@ -628,9 +355,84 @@ const VerticalNav = memo(() => {
                   </i>
 
                   {/* MINI ICON */}
-                  <span className="sidenav-mini-icon">OR</span>
+                   <OverlayTrigger placement="right" overlay={<Tooltip>Order</Tooltip>}>
+                      <i className="sidenav-mini-icon">O</i>
+                    </OverlayTrigger>
 
                   <span className="item-name">Order</span>
+                     <i className="right-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      className="icon-18"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </i>
+                   
+                 
+
+              
+               
+                
+                  </CustomToggle>
+                  <Accordion.Collapse eventKey="Order">
+                    <ul className="sub-nav " >
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Order/Add-order' title=' Add-order' minititle='Ao'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Order/View-order' title=' View-order' minititle='Vo'></SidebarMenu>
+
+                    </ul>
+                  </Accordion.Collapse>
+                </Accordion.Item>
+                
+                <Accordion.Item as="li" eventKey="Purchase" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Purchase/Add-purchase' ? 'active' : '' || location.pathname === '/Accounting/Purchase/View-purchase' ? 'active' : ''  }`}  >
+                  <CustomToggle eventKey="Purchase" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
+                   
+                       <i className="icon">
+                    <svg
+                      width="20"
+                      className="icon-20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {/* Cart body */}
+                      <path
+                        opacity="0.4"
+                        d="M4 5H6L7.5 15H18.5L20 8H8"
+                        fill="currentColor"
+                      />
+                      {/* Cart handle */}
+                      <path
+                        d="M6 5H4"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                      />
+                      {/* Wheels */}
+                      <circle cx="9" cy="18" r="1.5" fill="currentColor" />
+                      <circle cx="16" cy="18" r="1.5" fill="currentColor" />
+                    </svg>
+                  </i>
+
+                  {/* MINI ICON */}
+                   <OverlayTrigger placement="right" overlay={<Tooltip>Purchase</Tooltip>}>
+                      <i className="sidenav-mini-icon">Pr</i>
+                    </OverlayTrigger>
+
+                  <span className="item-name">Purchase</span>
+                 
+
+                  {/* MINI ICON */}
+                 
                   <i className="right-icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -648,256 +450,54 @@ const VerticalNav = memo(() => {
                       />
                     </svg>
                   </i>
-                </CustomToggle>
+                   
 
-                <Accordion.Collapse eventKey="Order">
-                  <ul className="sub-nav">
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Order/Add-order"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Order/Add-order"
-                          ? "active"
-                          : ""
-                          }`}
+                
+                  </CustomToggle>
+                  <Accordion.Collapse eventKey="Purchase">
+                    <ul className="sub-nav " >
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Purchase/Add-purchase' title=' Add-purcahse' minititle='Ai'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Purchase/View-purchase' title=' View-purcahse' minititle='Vi'></SidebarMenu>
+
+                    </ul>
+                  </Accordion.Collapse>
+                </Accordion.Item>
+                <SidebarMenu isTag="true" pathname='/Accounting/Payments' title='Payments' minititle='P'>
+                            <i className="icon">
+                      <svg
+                        width="20"
+                        className="icon-20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Add-order</span>
-                      </Link>
-                    </Nav.Item>
-
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Order/View-order"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Order/View-order"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">View-order</span>
-                      </Link>
-                    </Nav.Item>
-
-                  </ul>
-                </Accordion.Collapse>
-              </Accordion.Item>
-
-              {/* Payments */}
-              <ul className="sub-nav">
-                <Nav.Item as="li">
-                  <Link
-                    href="/Accounting/Payments/Page"
-                    className={`nav-link ${location.pathname === "/Accounting/Payments/Page" ? "active" : ""
-                      }`}
-                  >
-                    <i className="icon">
-    <svg
-      width="20"
-      className="icon-20"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Card / wallet base */}
-      <path
-        opacity="0.4"
-        d="M3 6C3 4.9 3.9 4 5 4H19C20.1 4 21 4.9 21 6V18C21 19.1 20.1 20 19 20H5C3.9 20 3 19.1 3 18V6Z"
-        fill="currentColor"
-      />
-      {/* Card stripe */}
-      <path
-        d="M3 9H21"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      {/* Payment dot */}
-      <circle cx="17" cy="14" r="1.5" fill="currentColor" />
-    </svg>
-  </i>
-
-  {/* MINI ICON */}
-  <span className="sidenav-mini-icon">PY</span>
-                    <span className="item-name">Payments</span>
-       
-                  </Link>
-                </Nav.Item>
-              </ul>
-
-
-
-
-              {/* Purchase */}
-              <Accordion.Item
-                eventKey="Purchase"
-                as="li"
-                bsPrefix={`nav-item ${location.pathname.startsWith("/Accounting/Purchase")
-                  ? "active"
-                  : ""
-                  }`}
-              >
-                <CustomToggle
-                  eventKey="Purchase"
-                  onClick={(activeKey: any) => setActiveMenu(activeKey)}
-                  className="nav-link"
-                >
-                   <i className="icon">
-    <svg
-      width="20"
-      className="icon-20"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Cart body */}
-      <path
-        opacity="0.4"
-        d="M4 5H6L7.5 15H18.5L20 8H8"
-        fill="currentColor"
-      />
-      {/* Cart handle */}
-      <path
-        d="M6 5H4"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      {/* Wheels */}
-      <circle cx="9" cy="18" r="1.5" fill="currentColor" />
-      <circle cx="16" cy="18" r="1.5" fill="currentColor" />
-    </svg>
-  </i>
-
-  {/* MINI ICON */}
-  <span className="sidenav-mini-icon">PU</span>
-
-                  <span className="item-name">Purchase</span>
-                   <i className="right-icon">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      className="icon-18"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M9 5l7 7-7 7"
-      />
-    </svg>
-  </i>
-                </CustomToggle>
-
-                <Accordion.Collapse eventKey="Purchase">
-                  <ul className="sub-nav">
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Purchase/Add-purchase"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Purchase/Add-purchase"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">Add-purchase</span>
-                      </Link>
-                    </Nav.Item>
-
-                    <Nav.Item as="li">
-                      <Link
-                        href="/Accounting/Purchase/View-purchase"
-                        className={`nav-link ${location.pathname ===
-                          "/Accounting/Purchase/View-purchase"
-                          ? "active"
-                          : ""
-                          }`}
-                      >
-                        <i className="icon">
-                          <svg
-                            className="icon-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <g>
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="8"
-                                fill="currentColor"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </i>
-                        <span className="item-name">View-purchase</span>
-                      </Link>
-                    </Nav.Item>
-
-                  </ul>
-                </Accordion.Collapse>
-              </Accordion.Item>
-
-            </Accordion>
+                        {/* Card / wallet base */}
+                        <path
+                          opacity="0.4"
+                          d="M3 6C3 4.9 3.9 4 5 4H19C20.1 4 21 4.9 21 6V18C21 19.1 20.1 20 19 20H5C3.9 20 3 19.1 3 18V6Z"
+                          fill="currentColor"
+                        />
+                        {/* Card stripe */}
+                        <path
+                          d="M3 9H21"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                        />
+                        {/* Payment dot */}
+                        <circle cx="17" cy="14" r="1.5" fill="currentColor" />
+                      </svg>
+                    </i>
+                </SidebarMenu>
+              </Accordion>
+            </ul>
           </Accordion.Collapse>
         </Accordion.Item>
+
+
+            
+
+        
 
         <Accordion.Item
           as="li"

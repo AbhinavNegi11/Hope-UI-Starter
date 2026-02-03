@@ -4,7 +4,7 @@ import { useState, Fragment } from "react";
 import { Row, Col, Table, Button, Form } from "react-bootstrap";
 import Card from "@/components/bootstrap/card";
 
-export default function AddPurchasePage() {
+const AddPurchasePage=()=> {
   const emptyRow = {
     client: "",
     billDate: "",
@@ -328,3 +328,5 @@ export default function AddPurchasePage() {
     </Row>
   );
 }
+AddPurchasePage.layout = "Accounting";
+export default AddPurchasePage;
