@@ -14,7 +14,8 @@ import LandingPage from "@/layouts/LandingPage";
 import SSRProvider from 'react-bootstrap/SSRProvider';
 import Blank from '@/layouts/blank';
 import Accounting from '@/layouts/Accounting';
-
+import Company from '@/layouts/Company';
+import GeneralReports from '@/layouts/GeneralReports';
 //store
 import { Provider } from 'react-redux';
 //reducer
@@ -25,6 +26,8 @@ const layouts : any = {
   "DEFAULT": Default,
   "LandingPage": LandingPage,
   "Accounting": Accounting,
+  "Company": Company,
+  "GeneralReports": GeneralReports,
 };
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {

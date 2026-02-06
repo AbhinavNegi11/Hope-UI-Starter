@@ -45,5 +45,6 @@ const ViewOrders = memo(() => {
     </Fragment>
   );
 });
+ViewOrders.layout = "My-Order-Details";
 
 export default ViewOrders;

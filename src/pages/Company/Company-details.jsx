@@ -139,5 +139,6 @@ const CompanyMaster = () => {
     </Row>
   );
 };
+CompanyMaster.layout = "Company";
 
 export default CompanyMaster;

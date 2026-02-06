@@ -114,5 +114,6 @@ const AddParty = () => {
     </Row>
   );
 };
+AddParty.layout = "Company";
 
 export default AddParty;

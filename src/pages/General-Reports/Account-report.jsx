@@ -98,5 +98,6 @@ const ClientStatementPage = () => {
         </Row>
     );
 };
+ClientStatementPage.layout = "GeneralReports";
 
 export default ClientStatementPage;
