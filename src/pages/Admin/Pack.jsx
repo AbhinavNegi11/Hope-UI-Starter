@@ -117,4 +117,5 @@ const DataTableOptions = {
     );
 };
 
+PaymentsPage.layout = "admin";
 export default PaymentsPage;

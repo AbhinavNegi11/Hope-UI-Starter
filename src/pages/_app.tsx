@@ -14,6 +14,8 @@ import LandingPage from "@/layouts/LandingPage";
 import SSRProvider from 'react-bootstrap/SSRProvider';
 import Blank from '@/layouts/blank';
 import Accounting from '@/layouts/Accounting';
+import Admin from '@/layouts/admin';
+import ExcelReports from '@/layouts/excel-reports';
 
 //store
 import { Provider } from 'react-redux';
@@ -24,8 +26,10 @@ const layouts : any = {
   "Blank":Blank,
   "DEFAULT": Default,
   "LandingPage": LandingPage,
-  "Accounting": Accounting,
-};
+  "accounting": Accounting,
+  "admin": Admin,
+  "excel-reports": ExcelReports,
+  };
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   layout: string

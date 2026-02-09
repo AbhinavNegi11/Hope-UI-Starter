@@ -67,7 +67,7 @@ const AddInvoicePage=()=> {
             <Button
               size="sm"
               variant="outline-primary"
-              onClick={() => router.push("/invoice")}
+              onClick={() => router.push("/accounting/invoice")}
             >
               Invoice List
             </Button>
@@ -162,5 +162,5 @@ const AddInvoicePage=()=> {
     </>
   );
 }
-AddInvoicePage.layout="Accounting"
-export default AddInvoicePage 
+AddInvoicePage.layout = "accounting";
+export default AddInvoicePage;

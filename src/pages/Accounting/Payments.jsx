@@ -178,6 +178,6 @@ const PaymentsPage=()=> {
         </Row>
     );
 }
-PaymentsPage.layout = "Accounting";
+PaymentsPage.layout = "accounting";
 export default PaymentsPage;
 

@@ -141,4 +141,5 @@ const PaymentsPage = () => {
     );
 };
 
+PaymentsPage.layout = "admin";
 export default PaymentsPage;

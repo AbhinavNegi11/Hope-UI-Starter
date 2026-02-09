@@ -6,6 +6,9 @@ import {Button} from 'react-bootstrap'
 // next-image
 import Image from 'next/image'
 
+// next-link
+import Link from 'next/link'
+
 const Sidebarprofilecard = memo(() => {
     return (
        <Fragment>
@@ -21,6 +24,14 @@ const Sidebarprofilecard = memo(() => {
                     <span className="sidebar-profile-username">@musk</span>
                 </div>
                 <div className="sidebar-profile-action">
+                    {/* <Link href="/" className="btn-icon btn-sm rounded-pill btn-action" style={{backgroundColor: 'var(--bs-primary)', border: 'none', color: 'white'}}>
+                        <span className="btn-inner">
+                            <svg className="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.57 5.92969L3.5 11.9997L9.57 18.0697" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M20.5 12H3.67" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </span>
+                    </Link>{" "} */}
                     <Button className="btn-icon btn-sm rounded-pill btn-action">
                         <span className="btn-inner">
                             <svg className="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

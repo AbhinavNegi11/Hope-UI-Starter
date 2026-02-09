@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button, Badge, Table } from "react-bootstrap";
 import Card from "@/components/bootstrap/card";
 
-const viewInvoice=()=> {
+const ViewInvoicePage=()=> {
   // Empty table initially
   const [data, setData] = useState([]);
 
@@ -104,5 +104,5 @@ const viewInvoice=()=> {
     </>
   );
 }
-viewInvoice.layout="Accounting"
-export default viewInvoice 
+ViewInvoicePage.layout = "accounting";
+export default ViewInvoicePage;

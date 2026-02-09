@@ -52,7 +52,7 @@ const Accountingvarticalnav = memo(() => {
                     </Nav.Link>
                 </Nav.Item>
                 
-                <Accordion.Item eventKey="CD" as="li" bsPrefix={`nav-item  ${location.pathname === '/Accounting/Credit-Debit-Note/Credit' || location.pathname === '/Accounting/Credit-Debit-Note/Debit' ? 'active' : '' } `} >
+                <Accordion.Item eventKey="CD" as="li" bsPrefix={`nav-item  ${location.pathname === '/accounting/credit-debit-note/credit' || location.pathname === '/accounting/credit-debit-note/debit' ? 'active' : '' } `} >
                     <CustomToggle className="nav-link" eventKey="CD" active={activeMenu === 'CD' ? true : false} onClick={(activeKey: any) => setActiveMenu(activeKey)} >
                              <i className="icon">
                     <svg
@@ -99,12 +99,12 @@ const Accountingvarticalnav = memo(() => {
                     </CustomToggle>
                     <Accordion.Collapse eventKey="CD" >
                         <ul className="sub-nav " >
-                            <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Credit-Debit-Note/Credit' title='Credit' minititle='CR'></SidebarMenu>
-                            <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Credit-Debit-Note/Debit' title='Debit' minititle='DB'></SidebarMenu>
+                            <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/credit-debit-note/credit' title='Credit' minititle='CR'></SidebarMenu>
+                            <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/credit-debit-note/debit' title='Debit' minititle='DB'></SidebarMenu>
                         </ul>
                     </Accordion.Collapse>
                 </Accordion.Item>
-                <Accordion.Item as="li" eventKey="Employee" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Employee/Employee-details' ? 'active' : '' || location.pathname === '/Accounting/Employee/Salary-slip' ? 'active' : '' || location.pathname === '/Accounting/Employee/Salary' ? 'active' : '' || activeMenu === 'Employee' ? 'active' : ''}`}  >
+                <Accordion.Item as="li" eventKey="Employee" bsPrefix={`nav-item   ${location.pathname === '/accounting/employee/employee-details' ? 'active' : '' || location.pathname === '/accounting/employee/salary-slip' ? 'active' : '' || location.pathname === '/accounting/employee/salary' ? 'active' : '' || activeMenu === 'Employee' ? 'active' : ''}`}  >
                     <CustomToggle eventKey="Employee" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
                                <i className="icon">
                     <svg
@@ -152,14 +152,14 @@ const Accountingvarticalnav = memo(() => {
                     </CustomToggle>
                     <Accordion.Collapse eventKey="Employee" >
                         <ul className="sub-nav " >
-                            <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Employee/Employee-details' title='Employee Details' minititle='E'></SidebarMenu>
-                            <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Employee/Salary-slip' title='Salary-slip' minititle='SS'></SidebarMenu>
-                            <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Employee/Salary' title='Salary' minititle='S'></SidebarMenu>
+                            <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/employee/employee-details' title='Employee Details' minititle='E'></SidebarMenu>
+                            <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/employee/salary-slip' title='Salary-slip' minititle='SS'></SidebarMenu>
+                            <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/employee/salary' title='Salary' minititle='S'></SidebarMenu>
 
                         </ul>
                     </Accordion.Collapse>
                 </Accordion.Item>
-                <Accordion.Item as="li" eventKey="Invoice" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Invoice/Add-invoice' ? 'active' : '' || location.pathname === '/Accounting/Invoice/View-invoice' ? 'active' : ''  || activeMenu === 'Employee' ? 'active' : ''}`}  >
+                <Accordion.Item as="li" eventKey="Invoice" bsPrefix={`nav-item   ${location.pathname === '/accounting/invoice/add-invoice' ? 'active' : '' || location.pathname === '/accounting/invoice/view-invoice' ? 'active' : ''  || activeMenu === 'Employee' ? 'active' : ''}`}  >
                     <CustomToggle eventKey="Invoice" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
                        <i className="icon">
                     <svg
@@ -207,13 +207,13 @@ const Accountingvarticalnav = memo(() => {
                     </CustomToggle>
                     <Accordion.Collapse eventKey="Invoice" >
                         <ul className="sub-nav " >
-                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Invoice/Add-invoice' title=' Add-invoice' minititle='Ai'></SidebarMenu>
-                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Invoice/View-invoice' title=' View-invoice' minititle='Vi'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/invoice/add-invoice' title=' Add-invoice' minititle='Ai'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/invoice/view-invoice' title=' View-invoice' minititle='Vi'></SidebarMenu>
 
                         </ul>
                     </Accordion.Collapse>
                 </Accordion.Item>
-                <Accordion.Item as="li" eventKey="Order" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Order/Add-order' ? 'active' : '' || location.pathname === '/Accounting/Order/View-order' ? 'active' : ''  || activeMenu === 'Order' ? 'active' : ''}`}  >
+                <Accordion.Item as="li" eventKey="Order" bsPrefix={`nav-item   ${location.pathname === '/accounting/order/add-order' ? 'active' : '' || location.pathname === '/accounting/order/view-order' ? 'active' : ''  || activeMenu === 'Order' ? 'active' : ''}`}  >
                     <CustomToggle eventKey="Order" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
                                 <i className="icon">
                     <svg
@@ -265,14 +265,14 @@ const Accountingvarticalnav = memo(() => {
                     </CustomToggle>
                     <Accordion.Collapse eventKey="Order" >
                         <ul className="sub-nav " >
-                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Order/Add-order' title=' Add-order' minititle='Ao'></SidebarMenu>
-                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Order/View-order' title=' View-order' minititle='Vo'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/order/add-order' title=' Add-order' minititle='Ao'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/order/view-order' title=' View-order' minititle='Vo'></SidebarMenu>
 
                         </ul>
                     </Accordion.Collapse>
                 </Accordion.Item>
                 
-                 <Accordion.Item as="li" eventKey="Purchase" bsPrefix={`nav-item   ${location.pathname === '/Accounting/Purchase/Add-purchase' ? 'active' : '' || location.pathname === '/Accounting/Purchase/View-purchase' ? 'active' : ''  || activeMenu === 'Purchase' ? 'active' : ''}`}  >
+                 <Accordion.Item as="li" eventKey="Purchase" bsPrefix={`nav-item   ${location.pathname === '/accounting/purchase/add-purchase' ? 'active' : '' || location.pathname === '/accounting/purchase/view-purchase' ? 'active' : ''  || activeMenu === 'Purchase' ? 'active' : ''}`}  >
                     <CustomToggle eventKey="Purchase" onClick={(activeKey: any) => setActiveMenu(activeKey)} className="nav-link" >
                       <i className="icon">
                     <svg
@@ -329,13 +329,13 @@ const Accountingvarticalnav = memo(() => {
                     </CustomToggle>
                     <Accordion.Collapse eventKey="Purchase" >
                         <ul className="sub-nav " >
-                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Purchase/Add-purchase' title=' Add-purcahse' minititle='Ai'></SidebarMenu>
-                      <SidebarMenu isTag="false" staticIcon="true" pathname='/Accounting/Purchase/View-purchase' title=' View-purcahse' minititle='Vi'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/purchase/add-purchase' title=' Add-purcahse' minititle='Ai'></SidebarMenu>
+                      <SidebarMenu isTag="false" staticIcon="true" pathname='/accounting/purchase/view-purchase' title=' View-purcahse' minititle='Vi'></SidebarMenu>
 
                         </ul>
                     </Accordion.Collapse>
                 </Accordion.Item>
-                 <SidebarMenu isTag="true" pathname='/Accounting/Payments' title='Payments' minititle='P'>
+                 <SidebarMenu isTag="true" pathname='/accounting/payments' title='Payments' minititle='P'>
                             <i className="icon">
                       <svg
                         width="20"

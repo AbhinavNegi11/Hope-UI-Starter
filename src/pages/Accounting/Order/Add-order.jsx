@@ -255,5 +255,5 @@ const AddOrderPage=()=> {
     </Row>
   );
 }
-AddOrderPage.layout="Accounting"
-export default AddOrderPage 
+AddOrderPage.layout = "accounting";
+export default AddOrderPage;

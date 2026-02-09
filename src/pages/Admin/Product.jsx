@@ -5,7 +5,7 @@ import { Row, Col, Button, Form, Badge } from "react-bootstrap";
 import Card from "@/components/bootstrap/card";
 import DataTable from "@/components/DataTable";
 
-const PaymentsPage = () => {
+const ProductPage = () => {
     const emptyUser = {
         name: "",
         productcode: "",
@@ -306,4 +306,5 @@ const PaymentsPage = () => {
     );
 };
 
-export default PaymentsPage;
+ProductPage.layout = "admin";
+export default ProductPage;

@@ -145,6 +145,6 @@ const Salary=()=> {
       </Col>
     </Row>
   );
-}
-Salary.layout="Accounting"
-export default Salary
+};
+Salary.layout = "accounting";
+export default Salary;

@@ -120,5 +120,5 @@ const CreditNotePage = () =>  {
         </Row>
     );
 }
-CreditNotePage.layout = "Accounting";
+CreditNotePage.layout = "accounting";
 export default CreditNotePage;

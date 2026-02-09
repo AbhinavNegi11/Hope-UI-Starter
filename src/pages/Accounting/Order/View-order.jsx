@@ -6,7 +6,7 @@ import Link from "next/link";
 import Card from "@/components/bootstrap/card";
 import DataTable from "@/components/DataTable";
 
-const viewOrders = memo(() => {
+const ViewOrderPage = memo(() => {
   // Raw data (can be replaced with API later)
   const orders = [
     {
@@ -66,7 +66,7 @@ const viewOrders = memo(() => {
             <Card.Header className="d-flex align-items-center justify-content-between">
               <h5 className="mb-0">View Order</h5>
 
-              <Link href="/orders/create" className="btn btn-sm btn-primary">
+              <Link href="/accounting/order/add-order" className="btn btn-sm btn-primary">
                 Create Order
               </Link>
             </Card.Header>
@@ -87,5 +87,5 @@ const viewOrders = memo(() => {
   );
 });
 
-viewOrders.layout = "Accounting";
-export default viewOrders;
+ViewOrderPage.layout = "accounting";
+export default ViewOrderPage;

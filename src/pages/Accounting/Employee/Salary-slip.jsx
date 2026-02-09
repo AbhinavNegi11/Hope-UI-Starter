@@ -267,7 +267,5 @@ const SalarySlipPage=()=> {
     </Row>
   );
 }
-SalarySlipPage.layout="Accounting"
+SalarySlipPage.layout = "accounting";
 export default SalarySlipPage
-
-

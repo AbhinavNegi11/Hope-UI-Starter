@@ -5,7 +5,8 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import Link from "next/link";
 import Card from "@/components/bootstrap/card";
 import DataTable from "@/components/DataTable";
-const DebitNotePage = () =>  {
+
+const DebitPage = () => {
   /* ---------------- Filters ---------------- */
   const [filters, setFilters] = useState({
     vendor: "",
@@ -17,13 +18,15 @@ const DebitNotePage = () =>  {
   };
 
   /* ---------------- Debit Note Data ---------------- */
+  const emptyDebit = {
+    debitNoteNo: "DN-2001",
+    vendor: "ABC Pharma",
+    purchaseNo: "PUR-5001",
+    created: "2024-01-08",
+  };
+
   const debitNotes = [
-    {
-      debitNoteNo: "DN-2001",
-      vendor: "ABC Pharma",
-      purchaseNo: "PUR-5001",
-      created: "2024-01-08",
-    },
+    emptyDebit,
     {
       debitNoteNo: "DN-2002",
       vendor: "Global Medicos",
@@ -121,6 +124,7 @@ const DebitNotePage = () =>  {
       </Col>
     </Row>
   );
-}
-DebitNotePage.layout="Accounting"
-export default DebitNotePage
+};
+
+DebitPage.layout = "accounting";
+export default DebitPage;

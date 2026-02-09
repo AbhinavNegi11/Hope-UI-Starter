@@ -117,5 +117,8 @@ const ClientStatementPage = () => {
         </Row>
     );
 };
+  
+ClientStatementPage.layout = "excel-reports";
+export default ClientStatementPage;  
 
-export default ClientStatementPage;
+  

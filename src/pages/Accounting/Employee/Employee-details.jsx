@@ -5,7 +5,7 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import Card from "@/components/bootstrap/card";
 import DataTable from "@/components/DataTable";
 
-const EmployeePage=()=> {
+const EmployeeDetailsPage=()=> {
   /* ---------- Form State ---------- */
   const emptyEmployee = {
     name: "",
@@ -201,5 +201,5 @@ const EmployeePage=()=> {
     </Row>
   );
 }
-EmployeePage.layout="Accounting"
-export default EmployeePage
+EmployeeDetailsPage.layout = "accounting";
+export default EmployeeDetailsPage

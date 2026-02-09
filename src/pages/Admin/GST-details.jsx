@@ -173,5 +173,5 @@ const PaymentsPage = () => {
         </Row>
     );
 };
-
+PaymentsPage.layout = "admin";
 export default PaymentsPage;

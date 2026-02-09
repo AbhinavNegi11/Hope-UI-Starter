@@ -5,8 +5,7 @@ import Link  from "next/link";
 
 //components
 import VerticalNav from "./vertical-nav";
-import Logo from "@/components/partials/components/logo";
-
+import Logo from '@/components/partials/components/logo'
 //scrollbar
 import Scrollbar from "smooth-scrollbar";
 

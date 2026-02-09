@@ -328,5 +328,5 @@ const AddPurchasePage=()=> {
     </Row>
   );
 }
-AddPurchasePage.layout = "Accounting";
+AddPurchasePage.layout = "accounting";
 export default AddPurchasePage;
