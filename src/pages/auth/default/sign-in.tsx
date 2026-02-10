@@ -1,4 +1,4 @@
-import { memo, Fragment } from 'react'
+import { memo, Fragment, useEffect } from 'react'
 
 //react-bootstrap
 import { Row, Col, Form, Button, ListGroup, } from 'react-bootstrap' 
@@ -11,16 +11,24 @@ import { useRouter } from 'next/router';
 import Card from '@/components/bootstrap/card' 
 // Import selectors & action from setting store
 import * as SettingSelector from '../../../store/setting/selectors'
-
+import { signIn } from "next-auth/react";
 // Redux Selector / Action
 import { useSelector } from 'react-redux';
 
-const SignIn = () => {
+const Login = () => {
    const appName = useSelector(SettingSelector.app_name)
    let history = useRouter()
+
+   useEffect(() => {
+      const timer = setTimeout(() => {
+        signIn("keycloak");
+      }, 3000); // 3 seconds delay
+  
+      return () => clearTimeout(timer);
+    }, []);
    return (
       <Fragment>
-         <section className="login-content">
+         {/* <section className="login-content">
             <Row className="m-0 align-items-center bg-white vh-100">
                <Col md="6">
                   <Row className="justify-content-center">
@@ -61,7 +69,7 @@ const SignIn = () => {
                                     </Col>
                                  </Row>
                                  <div className="d-flex justify-content-center">
-                                    <Button onClick={() => history.push('#')} type="button" variant="btn btn-primary">Sign In</Button>
+                                    <Button onClick={() => signIn("keycloak")} type="button" variant="btn btn-primary">Sign In</Button>
                                  </div>
                                  <p className="text-center my-3">or sign in with other accounts?</p>
                                  <div className="d-flex justify-content-center">
@@ -103,10 +111,14 @@ const SignIn = () => {
                   <Image src='/images/auth/01.png' width={960} height={1080}className="Image-fluid gradient-main animated-scaleX" alt="images" />
                </Col>
             </Row>
-         </section>
+         </section> */}
+         <div style={{ textAlign: "center", padding: "50px" }}>
+            <h2>Login with Keycloak</h2>
+            {/* <button onClick={() => signIn("keycloak")}>Login</button> */}
+         </div>
       </Fragment>
    )
 }
 
-SignIn.layout = "Blank"
-export default SignIn 
+Login.layout = "Blank"
+export default Login 

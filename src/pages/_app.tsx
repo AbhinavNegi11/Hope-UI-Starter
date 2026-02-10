@@ -20,7 +20,7 @@ import GeneralReports from '@/layouts/GeneralReports';
 import { Provider } from 'react-redux';
 //reducer
 import { wrapperStore } from '@/store'
-
+import { SessionProvider } from "next-auth/react"
 const layouts : any = {
   "Blank":Blank,
   "DEFAULT": Default,
@@ -46,14 +46,17 @@ export default function App({ Component, ...rest }: AppPropsWithLayout) {
   const { store, props } = wrapperStore.useWrappedStore(rest);
   const { pageProps } = props;
   return (
-    <Provider store={store}>
-      {/* <SSRProvider> */}
-        <AppLayout>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </AppLayout>
-      {/* </SSRProvider> */}
-    </Provider>
+
+    <SessionProvider session={pageProps.session}>
+      <Provider store={store}>
+        {/* <SSRProvider> */}
+          {/* <AppLayout> */}
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          {/* </AppLayout> */}
+        {/* </SSRProvider> */}
+      </Provider>
+    </SessionProvider>
   )
 }

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState, useEffect, memo, Fragment } from "react";
 import {
   Row,
@@ -59,6 +60,11 @@ const options3 = [
 const Dashboard = memo((options) => {
   useSelector(SettingSelector.theme_color);
 
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/signin");
+  }, []);
   const getVariableColor = () => {
     if (typeof document !== "undefined") {
       let prefix =
@@ -995,4 +1001,5 @@ const Dashboard = memo((options) => {
 });
 
 Dashboard.displayName = "Index";
+(Dashboard as any).layout = "Default";
 export default Dashboard;
