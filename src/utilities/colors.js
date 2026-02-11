@@ -75,3 +75,4 @@ export const getColorShadeTint = (color, value) => {
   document.head.appendChild(style);
   return colors;
 };
+
