@@ -45,6 +45,7 @@ const PaymentsPage=()=> {
             { title: "Action" },
         ],
         data: payments.map((item, index) => [
+            
             item.client,
             item.amount,
             item.description,

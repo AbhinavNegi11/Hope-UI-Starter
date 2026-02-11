@@ -6,17 +6,20 @@ import Card from "@/components/bootstrap/card";
 import DataTable from "@/components/DataTable";
 const CreditNotePage = () =>  {
     /* ---------------- Filters ---------------- */
+
     const [filters, setFilters] = useState({
+        
         client: "",
         invoice: "",
     });
-
     const handleFilterChange = (e) => {
+
         setFilters({ ...filters, [e.target.name]: e.target.value });
     };
 
     /* ---------------- Credit Note Data ---------------- */
     const creditNotes = [
+
         {
             creditNoteNo: "CN-1001",
             client: "Airi Satou",
@@ -39,6 +42,7 @@ const CreditNotePage = () =>  {
 
     /* ---------------- DataTable Config ---------------- */
     const DataTableOptions = {
+        
         columns: [
             { title: "Sno." },
             { title: "Credit Note No" },
@@ -48,6 +52,7 @@ const CreditNotePage = () =>  {
             { title: "Action" },
         ],
         data: creditNotes.map((item, index) => [
+            
             index + 1,
             item.creditNoteNo,
             item.client,
@@ -86,6 +91,7 @@ const CreditNotePage = () =>  {
                             <Col md={4}>
                                 {/* <Form.Label>Invoice</Form.Label> */}
                                 <Form.Select
+
                                     name="invoice"
                                     value={filters.invoice}
                                     onChange={handleFilterChange}

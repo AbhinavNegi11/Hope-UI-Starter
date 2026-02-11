@@ -63,7 +63,7 @@ const Dashboard = memo((options) => {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/signin");
+    router.replace("/");
   }, []);
   const getVariableColor = () => {
     if (typeof document !== "undefined") {

@@ -85,15 +85,14 @@ export const setContent = function (selector, content) {
 }
 
 // Copy to Clip-board
-export const copyToClipboard = (value, isJson) => {
-  const elem = document.createElement("textarea");
-  document.querySelector("body").appendChild(elem);
-  if (isJson) {
-    elem.value = JSON.stringify(value, null, 4);
-  } else {
-    elem.value = value
+export const copyToClipboard = async (value, isJson = false) => {
+  try {
+    const textToCopy = (typeof value === "object" && value !== null)
+      ? JSON.stringify(value, null, 4) 
+      : String(value);  
+
+    await navigator.clipboard.writeText(textToCopy);
+  } catch (err) {
+    console.error("Failed to copy:", err);
   }
-  elem.select();
-  document.execCommand('copy');
-  elem.remove();
-}
+};

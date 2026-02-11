@@ -1,4 +1,4 @@
-// import { login, getLoginDetails } from "@/services/all-services/user-info";
+import { login, getLoginDetails } from "@/services/all-services/user-info";
 import NextAuth from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -56,6 +56,7 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        // debugger
         // Check if credentials is defined and has the expected properties
         // console.log(credentials)
         // console.log("Credentials:", credentials);
@@ -99,7 +100,9 @@ export const authOptions = {
     newUser: "/auth/new-user", // New users will be directed here on first sign in (leave the property out if not of interest)
   },
   callbacks: {
+    
     async redirect({ url, baseUrl }) {
+      debugger
       return baseUrl;
     },
     
@@ -124,6 +127,7 @@ export const authOptions = {
     },
     async jwt({ token, user, account }) {
       // Initial sign in
+      // debugger
       if (account && user) {
         if (account.provider === "credentials") {
           // For credentials provider, we don't have account details like access_token

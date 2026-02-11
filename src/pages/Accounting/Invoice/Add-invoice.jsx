@@ -44,6 +44,7 @@ const AddInvoicePage=()=> {
   const [items, setItems] = useState([emptyItem]);
 
   const handleItemChange = (i, field, value) => {
+
     const updated = [...items];
     updated[i][field] = value;
     setItems(updated);
